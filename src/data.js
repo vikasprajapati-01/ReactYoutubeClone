@@ -8,6 +8,6 @@ export const value_converter = (value) => {
         return Math.floor(value/1000) + "K";
     }
     else {
-        value;
+        return value;
     }
 }
