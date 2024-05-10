@@ -7,6 +7,9 @@ export const value_converter = (value) => {
     else if(value >= 1000) {
         return Math.floor(value/1000) + "K";
     }
+    else if(value == 0) {
+        return "";
+    }
     else {
         return value;
     }
