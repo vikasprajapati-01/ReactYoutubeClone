@@ -15,18 +15,20 @@ import thumbnail8 from '../../assets/thumbnail8.jfif'
 import { Link } from 'react-router-dom'
 import { API_KEY, value_converter } from '../../data'
 
-function Feed({category}) {
+function Feed({category, selectRegion}) {
 
     const [data, setData] = useState([]);
 
     const fetchData = async () => {
-        const videoList_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=US&videoCategoryId=${category}&key=${API_KEY}`
+        // console.log("In")
+        const videoList_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=50&regionCode=${selectRegion}&videoCategoryId=${category}&key=${API_KEY}`
         await fetch(videoList_url).then(response=> response.json()).then(data => setData(data.items))
     }
 
     useEffect(() => {
+        // console.log("In")
         fetchData();
-    },[category])
+    },[category, selectRegion])
 
     return(
         <div className="feed">

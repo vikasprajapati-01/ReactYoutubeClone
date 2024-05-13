@@ -46,6 +46,37 @@ nav {
     border-radius: 50%;
 }
 
+  .select-region label {
+    font-size: 16px;
+    font-weight: 550;
+    margin-right: 10px;
+  }
+  
+  .select-region select {
+    padding: 5px 5px;
+    font-size: 15px;
+    border: 1px solid #000;
+    border-radius: 5px;
+  }
+  
+  .select-region select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .select-region select option {
+    padding: 5px 5px;
+    font-size: 15px;
+  }
+  
+  /* .select-region select option:hover {
+    background-color: #f0f0f0;
+  } */
+  
+  .select-region select option:checked {
+    background-color: #007bff;
+    color: #fff;
+  }
 @media (max-width : 900px) {
     .menu-icon {
         display: none;

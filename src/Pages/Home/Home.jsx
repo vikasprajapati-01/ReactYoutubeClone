@@ -4,7 +4,7 @@ import './Home.css'
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import Feed from '../../Components/Feed/Feed.jsx'; 
 
-function Home({sidebar}) {
+function Home({sidebar, selectRegion}) {
 
     const [category , setCategory] = useState(0);
 
@@ -12,7 +12,7 @@ function Home({sidebar}) {
         <>
             <Sidebar sidebar = {sidebar} category ={category} setCategory ={setCategory}/>
             <div className={`container ${sidebar===true? "": "large-container"}`}>
-                <Feed category ={category} />
+                <Feed category ={category} selectRegion= {selectRegion}/>
             </div>
         </>
     );

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import './Navbar.css'
 
@@ -12,13 +12,25 @@ import profile_icon from '../../assets/user1.jpg'
 
 import { Link } from 'react-router-dom'
 
-function Navbar({setSidebar}) {
+function Navbar({setSidebar, setSelectRegion}) {
+
     return(
         <nav className='flex-div'>
             <div className="nav-left flex-div">
                 <img src={menu_icon} alt="" className='menu-icon' onClick={() => setSidebar(prev => prev===false? true: false)} />
                 <Link to='/'><img src={logo} alt="" className='logo'/></Link>
-                </div>
+            </div>
+
+            <div className='select-region'>
+                <label>Select Region:</label>
+                <select id="region" name='region'
+                    onChange={e => {setSelectRegion(e.target.value)}}
+                >
+                    <option value="US" >USA</option>
+                    <option value="IN" >India</option>
+                    <option value="JP" >Japan</option>
+                </select>
+            </div>
 
             <div className="nav-middle flex-div">
                 <div className="search-box flex-div">
