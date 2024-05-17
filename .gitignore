@@ -24,4 +24,4 @@ dist-ssr
 *.sw?
 
 
-.src/data.js
+.data.js
