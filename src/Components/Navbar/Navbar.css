@@ -79,7 +79,8 @@ nav {
   }
 @media (max-width : 900px) {
     .menu-icon {
-        display: none;
+        display: block;
+        cursor: pointer;
     }
     .nav-right img {
         display: none;
@@ -94,4 +95,39 @@ nav {
     .nav-middle .search-box input {
         width: 100px;
     }
+}
+
+@media (max-width : 480px) {
+  .menu-icon {
+      display: flex;
+      z-index: 1000;
+  }
+  .logo {
+    width: 10px;
+    height: auto;
+  }
+  .select-region label {
+    font-size: 14px;
+  }
+  #region {
+    padding: 5px;
+    font-size: 12px;
+  }
+  #region option {
+    padding: 5px;
+    font-size: 12px;
+  }
+  .nav-middle .search-box{
+    display: none;
+  }
+  .nav-right .user-icon {
+      display: block;
+      width: 30px;
+  }
+  .logo {
+      width: 70px;
+  }
+  .nav-middle .search-box input {
+      width: 100px;
+  }
 }

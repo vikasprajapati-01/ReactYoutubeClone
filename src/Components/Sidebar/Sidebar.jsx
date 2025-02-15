@@ -19,7 +19,7 @@ import cameron from '../../assets/user5.jpg'
 
 function Sidebar({sidebar, category, setCategory}) {
     return(
-        <div className={`sidebar ${sidebar===true? "": "no-sidebar"}`}>
+        <div className={`sidebar ${sidebar? "": "no-sidebar"}`}>
             <div className="shortcut-links">
                 <div className={`side-link ${category===0?"active" : ""}`} onClick={() => setCategory(0)}>
                     <img src={home} alt="" /> <p>Home</p>
@@ -63,9 +63,6 @@ function Sidebar({sidebar, category, setCategory}) {
                 </div>
                 <div className="side-link">
                     <img src={megan} alt="" /> <p>Bro Workout</p>
-                </div>
-                <div className="side-link">
-                    <img src={cameron} alt="" /> <p>Lets Play</p>
                 </div>
             </div>
         </div>
