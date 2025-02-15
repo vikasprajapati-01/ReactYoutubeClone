@@ -22,10 +22,26 @@ function PlayVideo() {
     const [channelData, setChannelData] = useState(null);
     const [commentData, setCommentData] = useState([]);
 
+    // const fetchVideoData = async () => {
+    //     const videoDetails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
+    //     await fetch(videoDetails_url).then(res => res.json()).then(data => setApiData(data.items[0]));
+    // }
+
     const fetchVideoData = async () => {
-        const videoDetails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`
-        await fetch(videoDetails_url).then(res => res.json()).then(data => setApiData(data.items[0]));
-    }
+        try {
+            const videoDetails_url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${videoId}&key=${API_KEY}`;
+            const response = await fetch(videoDetails_url);
+            const data = await response.json();
+            
+            if (data.items && data.items.length > 0) {
+                setApiData(data.items[0]);
+            } else {
+                console.error("No video data found");
+            }
+        } catch (error) {
+            console.error("Error fetching video data:", error);
+        }
+    };
 
     const fetchChannelData = async () => {
 
@@ -43,13 +59,15 @@ function PlayVideo() {
     }, [videoId])
 
     useEffect(() => {
-        fetchChannelData();
-    }, [apiData])
+        if (apiData && apiData.snippet) {
+            fetchChannelData();
+        }
+    }, [apiData]);
 
     return (
         <div className='play-video'>
             {/* <video src={video} controls autoPlay muted></video> */}
-            <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+            <iframe src={`https://www.youtube.com/embed/${videoId}?autoplay=1`} frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             <h3>{apiData ? apiData.snippet.title : "Title here"}</h3>
             <div className="play-video-info">
                 <p>{apiData ? value_converter(apiData.statistics.viewCount) : "views here"} Views &bull; {apiData ? moment(apiData.snippet.publishedAt).fromNow() : 'time of upload'}</p>

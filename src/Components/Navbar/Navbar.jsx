@@ -29,6 +29,11 @@ function Navbar({setSidebar, setSelectRegion}) {
                     <option value="US" >USA</option>
                     <option value="IN" >India</option>
                     <option value="JP" >Japan</option>
+                    <option value="RU" >Russia</option>
+                    <option value="KR" >Korea</option>
+                    <option value="MX" >Mexico</option>
+                    <option value="GB" >UK</option>
+                    <option value="AU" >Australia</option>
                 </select>
             </div>
 
