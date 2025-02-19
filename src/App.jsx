@@ -9,7 +9,7 @@ import { Routes , Route } from 'react-router-dom'
 
 function App() {
 
-  const [sidebar, setSidebar] = useState(true);
+  const [sidebar, setSidebar] = useState(false);
   const [selectRegion, setSelectRegion] = useState('US');
 
   return (
